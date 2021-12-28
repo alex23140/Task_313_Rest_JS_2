@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional
-    public User findeById(long id) {
+    public User findById(long id) {
         Optional <User> optionalUser = userDao.findById(id);
         return optionalUser.get();
     }
