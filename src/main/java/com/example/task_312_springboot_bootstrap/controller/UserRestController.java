@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,18 +51,6 @@ public class UserRestController {
         userService.save(user);
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<User> create(@RequestBody @Valid User user,
-//                                       BindingResult bindingResult,
-//                                       @RequestParam(required = false, name = "newRoles") String[] newRoles) {
-//
-//        if (bindingResult.hasErrors()) {
-//            ResponseEntity.status(HttpStatus.RESET_CONTENT).build();
-//        }
-//
-//        userService.addUser(user, newRoles);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(user);
-//    }
 
     @PutMapping("/edit")
     public ResponseEntity<User> edit(@RequestBody User user) {
