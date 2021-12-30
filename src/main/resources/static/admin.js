@@ -191,7 +191,7 @@ function getModalEdit(id) {
                 '                    <p>' +
                 '                        <label>Password</label>' +
                 '                        <input class="form-control form-control-sm" type="password"' +
-                '                               id="editPassword" value =" ' + user.password + '"' +
+                '                               id="editPassword" value ="' + user.password + '"' +
                 '                               placeholder="Password" required>' +
                 '                    </p>' +
                 '                    <p>' +
