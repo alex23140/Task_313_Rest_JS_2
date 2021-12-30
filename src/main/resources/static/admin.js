@@ -247,10 +247,10 @@ function newUser() {
         }),
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
-        .then(response => console.log(response.json()))
+ //       .then(response => console.log(response.json()))
         .then(() => {
-            showAllUsers();
             formClear();
+            showAllUsers();
         })
         .catch( err => console.error('Error: ', err))
 
@@ -294,11 +294,19 @@ function showAllUsers() {
                 var cell7 = row.insertCell();
                 cell7.innerHTML =
                     '<button type="button" onclick="getModalEdit(' + user.id + ')" class="btn btn-primary btn-sm">Edit</button>';
-
                 var cell8 = row.insertCell();
                 cell8.innerHTML =
                     '<button type="button" onclick="getModalDelete(' + user.id + ')" class="btn btn-danger btn-sm">Delete</button>';
             })
+
+                $('#tab2').removeClass('active');
+
+                $('#tab1').addClass('active')
+
+
+                $('#new_user').removeClass('show active')
+                $('#users_table').addClass('show active')
+
         });
 }
 
@@ -313,31 +321,3 @@ function showHeader() {
         });
 }
 
-
-showUserInfo();
-
-function showUserInfo() {
-    let tBody = document.getElementById("user_info");
-    tBody.innerHTML = "";
-    fetch('http://localhost:8080/api/getUser')
-        .then(response => console.log(response.json()))
-        .then(user => {
-            var row = tBody.insertRow(0);
-            var cell0 = row.insertCell(0);
-            cell0.innerHTML = user.id;
-            var cell1 = row.insertCell(1);
-            cell1.innerHTML = user.firstName;
-            var cell2 = row.insertCell(2);
-            cell2.innerHTML = user.lastName;
-            var cell3 = row.insertCell(3);
-            cell3.innerHTML = user.age;
-            var cell4 = row.insertCell(4);
-            cell4.innerHTML = user.email;
-            var cell5 = row.insertCell(4);
-            cell5.innerHTML = user.password;
-            var cell6 = row.insertCell(5);
-            cell6.innerHTML = user.roles.map((role) => role.name).join(', ');
-        })
-        .catch( err => console.error('Error: ', err));
-
-}
