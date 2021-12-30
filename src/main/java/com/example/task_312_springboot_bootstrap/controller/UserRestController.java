@@ -37,7 +37,6 @@ public class UserRestController {
 
     @GetMapping("/getUserById/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        System.out.println(id);
         try {
             User user = userService.findById(id);
             return new ResponseEntity<User>(user, HttpStatus.OK);
