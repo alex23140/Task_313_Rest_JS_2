@@ -1,20 +1,29 @@
 package com.example.task_312_springboot_bootstrap.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="users")
 public class User implements Serializable, UserDetails {
 
-    private static final long serialVersionUID = 1L;
+   // private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +51,6 @@ public class User implements Serializable, UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User() {
-    }
 
     public User(String firstName, String lastName, int age, String email) {
         this.firstName = firstName;
@@ -107,6 +114,16 @@ public class User implements Serializable, UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = new HashSet<>();
+        if (roles.contains("ADMIN")) {
+            this.roles.add(new Role("ROLE_ADMIN"));
+        }
+        if (roles.contains("USER")) {
+            this.roles.add(new Role("ROLE_USER"));
+        }
     }
 
     @JsonIgnore

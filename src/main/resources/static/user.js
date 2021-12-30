@@ -19,9 +19,9 @@ function showUserInfo() {
             cell3.innerHTML = user.age;
             var cell4 = row.insertCell(4);
             cell4.innerHTML = user.email;
-            var cell5 = row.insertCell(4);
+            var cell5 = row.insertCell(5);
             cell5.innerHTML = user.password;
-            var cell6 = row.insertCell(5);
+            var cell6 = row.insertCell(6);
             cell6.innerHTML =user.roles.map((role) => role.name).join(', ');
         })
         .catch( err => console.error('Error: ', err));

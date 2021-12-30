@@ -18,8 +18,8 @@ import java.util.Set;
 @RequestMapping("/")
 public class AdminController {
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     @Autowired
     private RoleServiceImpl roleService;

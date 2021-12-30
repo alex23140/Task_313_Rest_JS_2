@@ -103,7 +103,7 @@ function getModalDelete(id) {
                 '                               value="' + user.age + '" readonly>' +
                 '                    </p>' +
                 '                    <p>' +
-                '                        <label>Username</label>' +
+                '                        <label>Email</label>' +
                 '                        <input class="form-control form-control-sm" type="text"' +
                 '                               value="' + user.email + '" readonly>' +
                 '                    </p>' +
@@ -143,7 +143,6 @@ function getModalEdit(id) {
         .then(user => {
 
             let modal = document.getElementById('modalWindow');
-
             modal.innerHTML =
                 '<div id="modalEdit"' +
                 '     class="modal fade" tabindex="-1" role="dialog"' +
